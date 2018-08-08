@@ -8,6 +8,7 @@ app.set('view engine', 'pug')*/
 
 app.use((req,res,next)=> {
 	
+	next()
 })
 
 app.get('/', (req, res) => {
