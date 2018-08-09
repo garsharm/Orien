@@ -44,6 +44,11 @@ app.get('/', (req, res) => {
   res.render('home', { posts: posts })
 })
 
+app.post('/oriendata',(req, res)=>{
+	console.log(`XX:{req.params.corX}YY:{req.params.corY}`)
+	res.status(204).send('Bro chal rha hai') 
+})
+
 // blog post
 app.get('/post/:id', (req, res) => {
   // find the post in the `posts` array
