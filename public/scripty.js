@@ -8,7 +8,7 @@ $(document).ready(function(){
 			corY : event.gamma,
 		}
 
-		$.ajax({
+		/*$.ajax({
 			url: "/oriendata",
 
 			type: 'POST',
@@ -18,6 +18,6 @@ $(document).ready(function(){
 				   console.log(res);
 			        }
 
-		})
+		})*/
 	}, true)
 })	
