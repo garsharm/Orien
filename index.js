@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/oriendata',(req, res)=>{
-	console.log(`XX:{req.params.corX}YY:{req.params.corY}`)
+	console.log(`XX:${req.params.corX}YY:${req.params.corY}`)
 	res.status(204).send('Bro chal rha hai') 
 })
 
