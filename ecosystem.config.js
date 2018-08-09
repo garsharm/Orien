@@ -18,8 +18,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'git@github.com:garsharm/Orien.git',
       path : '~/pm2Dir',
-      sh_options: "StrictHostKeyChecking=no",
-      "post-deploy" : 'npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'npm install'
     },
   }
 };

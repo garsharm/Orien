@@ -1,19 +1,62 @@
 /*APPLICATION NO. 001*/
 const express = require('express')
 const app = express()
+
 const path = require('path')
 
-/*app.set('views','./views')
-app.set('view engine', 'pug')*/
+// fake posts to simulate a database
+const posts = [
+  {
+    id: 1,
+    author: 'John',
+    title: 'Templating with EJS',
+    body: 'Blog post number 1'
+  },
+  {
+    id: 2,
+    author: 'Drake',
+    title: 'Express: Starting from the Bottom',
+    body: 'Blog post number 2'
+  },
+  {
+    id: 3,
+    author: 'Emma',
+    title: 'Streams',
+    body: 'Blog post number 3'
+  },
+  {
+    id: 4,
+    author: 'Cody',
+    title: 'Events',
+    body: 'Blog post number 4'
+  }
+]
 
-app.use((req,res,next)=> {
-	
-	next()
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
+
+
+app.use('/static',express.static(path.join(__dirname,'public')))
+
+// blog home page
+app.get('/', (req, res) => {
+  // render `home.ejs` with the list of posts
+  res.render('home', { posts: posts })
 })
 
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname,views,index.html))
-	res.status(201).send(`Hey! Server file is on git repo : https://github.com/garsharm/Orien.git  - Garvit`)
+// blog post
+app.get('/post/:id', (req, res) => {
+  // find the post in the `posts` array
+  const post = posts.filter((post) => {
+    return post.id == req.params.id
+  })[0]
+
+  // render the `post.ejs` template with the post content
+  res.render('post', {
+    author: post.author,
+    title: post.title,
+    body: post.body
+  })
 })
 
 
